@@ -4,11 +4,11 @@ require 'rails_helper'
     context "relationships" do
       it "has many items" do
         merchant = create(:merchant)
-          expect(merchant).to respond_to(:items)
+        expect(merchant).to respond_to(:items)
       end
       it "has many invoices" do
         merchant = create(:merchant)
-          expect(merchant).to respond_to(:invoices)
+        expect(merchant).to respond_to(:invoices)
       end
     end
   end
