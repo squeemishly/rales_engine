@@ -4,6 +4,5 @@ FactoryGirl.define do
     result "success"
     invoice_id 1
     invoice
-    item
   end
 end
