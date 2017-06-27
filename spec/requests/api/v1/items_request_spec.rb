@@ -16,4 +16,12 @@ RSpec.describe "Items requests" do
     expect(item["name"]).to be_a String
     expect(item["description"]).to be_a String
   end
+
+  it "can find a single item" do
+    item = create(:item)
+
+    get "/api/v1/items/#{item.id}"
+
+    expect(response).to be_success
+  end
 end
