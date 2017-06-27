@@ -11,12 +11,14 @@ RSpec.describe "invoice_items" do
 
     expect(response).to be_success
     expect(invoice_items.count).to eq 3
-    expect(invoice_item).to have_key "customer_id"
-    expect(invoice_item).to have_key "merchant_id"
-    expect(invoice_item).to have_key "status"
-    expect(invoice_item["customer_id"]).to be_a Integer
-    expect(invoice_item["merchant_id"]).to be_a Integer
-    expect(invoice_item["status"]).to be_a String
+    expect(invoice_item).to have_key "invoice_id"
+    expect(invoice_item).to have_key "item_id"
+    expect(invoice_item).to have_key "quantity"
+    expect(invoice_item).to have_key "unit_price"
+    expect(invoice_item["invoice_id"]).to be_a Integer
+    expect(invoice_item["item_id"]).to be_a Integer
+    expect(invoice_item["quantity"]).to be_a Integer
+    expect(invoice_item["unit_price"]).to be_a String
   end
 
   it "can view a single invoice_item" do
@@ -27,11 +29,14 @@ RSpec.describe "invoice_items" do
     invoice_item = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(invoice_item).to have_key "customer_id"
-    expect(invoice_item).to have_key "merchant_id"
-    expect(invoice_item).to have_key "status"
-    expect(invoice_item["customer_id"]).to be_a Integer
-    expect(invoice_item["merchant_id"]).to be_a Integer
-    expect(invoice_item["status"]).to be_a String
+    expect(invoice_item["id"]).to eq id
+    expect(invoice_item).to have_key "invoice_id"
+    expect(invoice_item).to have_key "item_id"
+    expect(invoice_item).to have_key "quantity"
+    expect(invoice_item).to have_key "unit_price"
+    expect(invoice_item["invoice_id"]).to be_a Integer
+    expect(invoice_item["item_id"]).to be_a Integer
+    expect(invoice_item["quantity"]).to be_a Integer
+    expect(invoice_item["unit_price"]).to be_a String
   end
 end
