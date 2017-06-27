@@ -41,8 +41,8 @@ GEM
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (8.0.0)
+    bcrypt (3.1.11)
     builder (3.2.3)
-    byebug (9.0.6)
     capybara (2.14.3)
       addressable
       mime-types (>= 1.16)
@@ -175,7 +175,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  byebug
+  bcrypt (~> 3.1.7)
   capybara
   factory_girl_rails (~> 4.0)
   kaminari
