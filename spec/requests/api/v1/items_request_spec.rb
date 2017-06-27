@@ -22,6 +22,12 @@ RSpec.describe "Items requests" do
 
     get "/api/v1/items/#{item.id}"
 
+    item_parsed = JSON.parse(response.body)
+
     expect(response).to be_success
+    expect(item_parsed).to have_key "name"
+    expect(item_parsed).to have_key "description"
+    expect(item_parsed["name"]).to be_a String
+    expect(item_parsed["description"]).to be_a String
   end
 end
