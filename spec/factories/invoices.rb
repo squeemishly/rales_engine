@@ -1,5 +1,7 @@
 FactoryGirl.define do
   factory :invoice do
-    status "Invoice of DOOM!"
+    customer_id 1
+    merchant_id 1
+    status "refreshing"
   end
 end
