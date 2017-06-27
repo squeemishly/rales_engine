@@ -28,6 +28,8 @@ describe "Transactions API" do
     result = JSON.parse(response.body)
 
     expect(result["credit_card_number"]).to eq(transaction.credit_card_number)
-    expect(result["result"]).to be_a String 
+    expect(result["credit_card_number"]).to be_a String
+    expect(result["result"]).to eq(transaction.result)
+    expect(result["result"]).to be_a String
   end
 end
