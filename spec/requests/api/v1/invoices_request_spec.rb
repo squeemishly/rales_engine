@@ -21,6 +21,10 @@ RSpec.describe "invoices API" do
 
     get "/api/v1/invoices/#{invoice.id}"
 
+    invoice_response = JSON.parse(response.body)
+
     expect(response).to be_success
+    expect(invoice_response["id"]).to eq invoice.id
+    expect(invoice_response["name"]).to eq invoice.name
   end
 end
