@@ -2,15 +2,14 @@ require 'rails_helper'
 
 describe "Invoice Items API" do
   it "returns an invoice associated with an invoice item" do
-    invoice_1 = create(:invoice)
-    invoice_item = create(:invoice_item, invoice: invoice_1)
 
-    get "/api/v1/invoice_items/#{invoice_item.id}/invoice"
+    item1 = create(:item)
+    invoice_item1 = create(:invoice_item, item: item1)
 
+    get "/api/v1/invoice_items/#{invoice_item1.id}/item"
     expect(response).to be_success
 
-    invoice = JSON.parse(response.body)
-
-    expect(invoice["id"]).to eq(invoice_1.id)
+    item = JSON.parse(response.body)
+    expect(item["id"]).to eq(item1.id)
   end
 end
