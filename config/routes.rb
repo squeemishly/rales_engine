@@ -9,6 +9,7 @@ Rails.application.routes.draw do
         get "/random", to: "random#show"
         get "/:id/items", to: "item#index"
         get "/:id/invoices", to: "invoice#index"
+        get "/:id/customers_with_pending_invoices", to: "customers_with_pending_invoices#index"
        end
 
        resources :merchants, only: [:index, :show]
