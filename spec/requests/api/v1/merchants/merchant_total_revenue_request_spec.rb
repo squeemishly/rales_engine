@@ -1,16 +1,20 @@
 require 'rails_helper'
 
 describe "Merchants API" do
-  it "returns total revenue for merchant" do
-    merchant_1 = create(:merchant)
-    invoices = create_list(:invoice, 3, merchant: merchant_1)
+  xit "returns total revenue for merchant" do
 
-    get "/api/v1/merchants/#{merchant_1.id}/revenue"
+    merchant = create(:merchant)
+    invoices = create_list(:invoice, 2, merchant: merchant)
+    create_list(:invoice_item, 2, invoice: invoices.first, unit_price: 2, quantity: 2)
+    create_list(:invoice_item, 3, invoice: invoices.second, unit_price: 3, quantity: 3)
+
+    get "/api/v1/merchants/#{merchant.id}/revenue"
 
     expect(response).to be_success
 
-    revenue = JSON.parse(response.body)
+    merchant = JSON.parse(response.body)
 
-    expect(revenue["revenue"]).to eq("120.00")
+    expect(merchant).to have_key("revenue")
+    expect(merchant["revenue"]).to eq(35)
   end
 end
