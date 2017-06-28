@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :item do
-    name "Super Sweet Ninja Sword"
+    sequence :name do |x|
+      "Super Sweet Ninja Sword #{x}"
+    end
     description "It cuts with the greatest of ease"
     unit_price "85.63"
     merchant
