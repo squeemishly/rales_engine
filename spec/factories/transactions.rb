@@ -1,6 +1,10 @@
 FactoryGirl.define do
   factory :transaction do
-    credit_card_number "1234567892100"
+    sequence :credit_card_number do |n|
+      "123456789#{n}"
+    end
+
+    credit_card_expiration_date ""
     result "success"
     invoice
   end
