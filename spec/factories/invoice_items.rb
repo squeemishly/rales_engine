@@ -4,7 +4,8 @@ FactoryGirl.define do
     item
     quantity 3
     sequence :unit_price do |x|
-      "#{x}.#{x}"
+        1
     end
   end
+  
 end
