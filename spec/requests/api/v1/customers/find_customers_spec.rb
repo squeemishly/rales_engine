@@ -68,6 +68,6 @@ describe "Customers API" do
     customer = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(customer["last_name"]).to eq(@customer_2.last_name)
+  expect(customer["last_name"]).to eq(@customer_2.last_name)
   end
 end
