@@ -10,8 +10,9 @@ describe "Item API" do
 
     expect(response).to be_success
 
-    invoice = JSON.parse(response.body)
-    expect(invoice.first["id"]).to eq(invoices[0].id)
+    result = JSON.parse(response.body)
+    expect(result.first["id"]).to eq(invoices[0].id)
+    expect(result.count).to eq(3)
 
   end
 
