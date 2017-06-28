@@ -12,6 +12,17 @@ RSpec.describe "find an invoice" do
       expect(invoice["status"]).to eq 'refreshing'
     end
 
+    it "by the id" do
+      create_list(:invoice, 3)
+      invoice = Invoice.first
+
+      get '/api/v1/invoices/find?status=refreshing'
+      returned_invoice = JSON.parse(response.body)
+
+      expect(response).to be_success
+      expect(returned_invoice["id"]).to eq invoice.id
+    end
+
     it "by the customer" do
       create_list(:invoice, 3)
       invoice = Invoice.first
@@ -54,7 +65,7 @@ RSpec.describe "find an invoice" do
     end
 
     it "by the customer_id" do
-      customer = create(:customer)
+      customer = create(:customer, id: 1)
       invoice1 = create(:invoice)
       invoice2 = create(:invoice)
       invoice3 = create(:invoice, customer_id: customer.id)

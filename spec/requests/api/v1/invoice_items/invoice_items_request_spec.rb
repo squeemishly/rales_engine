@@ -18,7 +18,7 @@ RSpec.describe "invoice_items" do
     expect(invoice_item["invoice_id"]).to be_a Integer
     expect(invoice_item["item_id"]).to be_a Integer
     expect(invoice_item["quantity"]).to be_a Integer
-    expect(invoice_item["unit_price"]).to be_a String
+    expect(invoice_item["unit_price"]).to be_a Float
   end
 
   it "can view a single invoice_item" do
@@ -37,6 +37,6 @@ RSpec.describe "invoice_items" do
     expect(invoice_item["invoice_id"]).to be_a Integer
     expect(invoice_item["item_id"]).to be_a Integer
     expect(invoice_item["quantity"]).to be_a Integer
-    expect(invoice_item["unit_price"]).to be_a String
+    expect(invoice_item["unit_price"]).to be_a Float
   end
 end
