@@ -8,9 +8,7 @@ describe "Merchants API" do
     create_list(:invoice_item, 2, invoice: invoices.first, unit_price: 2, quantity: 2)
     create_list(:invoice_item, 3, invoice: invoices.second, unit_price: 3, quantity: 3)
 
-
     get "/api/v1/merchants/#{merchant.id}/revenue"
-
 
     expect(response).to be_success
 
