@@ -3,6 +3,8 @@ FactoryGirl.define do
     invoice
     item
     quantity 3
-    unit_price "85.63"
+    sequence :unit_price do |x|
+      "#{x}.#{x}"
+    end
   end
 end
