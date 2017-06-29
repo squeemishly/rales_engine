@@ -6,13 +6,12 @@ class Merchant < ApplicationRecord
   has_many :transactions, through: :invoices
 
   def revenue(date = nil)
-    sum = invoices.joins(:transactions, :invoice_items)
+          invoices.joins(:transactions, :invoice_items)
           .merge(Transaction.successful)
           .sum("invoice_items.quantity * invoice_items.unit_price")
-    {revenue: format_price(sum)}
   end
 
-  def format_price(sum)
-   (sum.to_f/100).to_s
- end
+ #  def format_price(sum)
+ #   (sum.to_f/100).to_s
+ # end
 end
