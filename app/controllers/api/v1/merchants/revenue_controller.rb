@@ -5,4 +5,9 @@ class Api::V1::Merchants::RevenueController < ApplicationController
     render json: merchant = Merchant.find(params[:id]).revenue(filter)
   end
 
+  def show
+    date = params[:date].to_datetime
+    render json: Merchant.all_revenue(date)
+  end
+
 end
