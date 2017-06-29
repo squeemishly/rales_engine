@@ -4,41 +4,45 @@ Rails.application.routes.draw do
      namespace :v1 do
 
        namespace :merchants do
-        get "/find_all", to: "find#index"
-        get "/find", to: "find#show"
-        get "/random", to: "random#show"
-        get "/:id/items", to: "item#index"
-        get "/:id/invoices", to: "invoice#index"
-        get "/:id/revenue", to: "merchant_revenue#show"
-
+        get "/find_all",             to: "find#index"
+        get "/find",                 to: "find#show"
+        get "/random",               to: "random#show"
+        get "/:id/items",            to: "item#index"
+        get "/:id/invoices",         to: "invoice#index"
+        get "/:id/revenue",          to: "merchant_revenue#show"
        end
 
        resources :merchants, only: [:index, :show]
 
        namespace :customers do
-         get "/find_all", to: "find#index"
-         get "/find", to: "find#show"
-         get '/:id/invoices', to: 'invoice#index'
-         get '/:id/invoices', to: 'invoice#index'
-         get '/:id/transactions', to: 'transaction#index'
+         get '/find_all',             to: 'find#index'
+         get '/find',                 to: 'find#show'
+         get '/:id/invoices',         to: 'invoice#index'
+         get '/:id/invoices',         to: 'invoice#index'
+         get '/:id/transactions',     to: 'transaction#index'
        end
 
        resources :customers, only: [:index, :show]
 
        namespace :invoices do
-         get '/find', to: 'find#show'
-         get '/find_all', to: 'find_all#index'
+         get '/find',                 to: 'find#show'
+         get '/find_all',             to: 'find_all#index'
+         get '/:id/invoice_items',    to: 'invoice_items#index'
+         get '/:id/items',            to: 'items#index'
+         get '/:id/merchants',        to: 'merchant#index'
+         get '/:id/customers',        to: 'customers#index'
+         get '/:id/transactions',     to: 'transaction#index'
        end
 
-       resources :invoices, only: [:index, :show]
+      resources :invoices, only: [:index, :show]
 
-       namespace :transactions do
-         get "/find", to: "find#show"
-         get "/find_all", to: "find#index"
-         get '/:id/invoice', to: 'transactions_invoice#show'
+      namespace :transactions do
+         get "/find",                 to: "find#show"
+         get "/find_all",             to: "find#index"
+         get '/:id/invoice',          to: 'transactions_invoice#show'
        end
 
-       resources :transactions, only: [:index, :show]
+      resources :transactions, only: [:index, :show]
 
        namespace :items do
          get '/find', to: 'find#show'
@@ -51,10 +55,10 @@ Rails.application.routes.draw do
       resources :items, only: [:index, :show]
 
       namespace :invoice_items do
-        get '/find', to: 'find#show'
-        get '/find_all', to: 'find#index'
-        get "/:id/invoice", to: "invoice_items_invoice#show"
-        get "/:id/item", to: "invoice_items_item#show"
+        get '/find',                  to: 'find#show'
+        get '/find_all',              to: 'find#index'
+        get "/:id/invoice",           to: "invoice_items_invoice#show"
+        get "/:id/item",              to: "invoice_items_item#show"
       end
 
       resources :invoice_items, only: [:index, :show]
