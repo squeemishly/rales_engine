@@ -24,6 +24,6 @@ describe "Merchants API" do
 
     merchant = response.body
 
-    expect(merchant).to eq("1005.96")
+    expect(merchant).to eq(merchant_1.revenue.to_s)
   end
 end
