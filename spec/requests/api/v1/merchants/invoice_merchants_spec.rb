@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "a list of invoices associated with a merchant can be found" do
-  xit "when a user gives a specific merchant" do
+  it "when a user gives a specific merchant" do
     merchant1 = create(:merchants_with_invoices)
     merchant2 = create(:merchants_with_invoices)
 
