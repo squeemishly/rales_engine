@@ -5,15 +5,15 @@ class Merchant < ApplicationRecord
   has_many :invoice_items, through: :invoices
   has_many :transactions, through: :invoices
 
-  def revenue(date = nil)
-          invoices.joins(:transactions, :invoice_items)
-          .merge(Transaction.successful)
-          .sum("invoice_items.quantity * invoice_items.unit_price")
+  def revenue(filter = nil)
+        sum = invoices.joins(:transactions, :invoice_items)
+        .where(filter)
+        .merge(Transaction.successful)
+        .sum("invoice_items.quantity * invoice_items.unit_price")
+
+        format_price(sum)
   end
 
-  def format_price(sum)
-   (sum.to_f/100).to_s
-  end
 
   def self.most_revenue(limit=5)
     select("merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) AS revenue")
@@ -22,5 +22,10 @@ class Merchant < ApplicationRecord
       .group(:id)
       .order('revenue DESC')
       .limit(limit)
+  end
+
+  def format_price(sum)
+    float = sum.to_f / 100
+    sprintf("%.2f", float)
   end
 end
