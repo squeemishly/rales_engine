@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :customer do
-
-    first_name "Mia"
+    sequence :first_name do |x|
+      "Mia #{x}"
+    end
     last_name "Jaeger"
 
     factory :customer_with_invoices do

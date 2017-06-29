@@ -27,5 +27,13 @@ class Merchant < ApplicationRecord
   def format_price(sum)
     float = sum.to_f / 100
     sprintf("%.2f", float)
+
+  def favorite_customer
+    customers.select("customers.*, count(invoices.customer_id) AS invoices_count")
+      .joins(invoices: :transactions)
+      .where(transactions: {result: "success"})
+      .group(:id)
+      .order("invoices_count DESC")
+      .limit(1)
   end
 end
