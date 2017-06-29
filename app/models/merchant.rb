@@ -27,6 +27,7 @@ class Merchant < ApplicationRecord
   def format_price(sum)
     float = sum.to_f / 100
     sprintf("%.2f", float)
+  end
 
   def favorite_customer
     customers.select("customers.*, count(invoices.customer_id) AS invoices_count")
