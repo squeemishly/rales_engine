@@ -6,6 +6,7 @@ require 'rails_helper'
         merchant = create(:merchant)
         expect(merchant).to respond_to(:items)
       end
+
       it "has many invoices" do
         merchant = create(:merchant)
         expect(merchant).to respond_to(:invoices)
