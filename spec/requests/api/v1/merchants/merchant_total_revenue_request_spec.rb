@@ -22,8 +22,8 @@ describe "Merchants API" do
 
     expect(response).to be_success
 
-    merchant = JSON.parse(response.body, :quirks_mode => true)
+    merchant = response.body
 
-    expect(merchant).to eq(1005.96)
+    expect(merchant).to eq("1005.96")
   end
 end
