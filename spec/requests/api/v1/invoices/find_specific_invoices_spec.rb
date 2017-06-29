@@ -65,7 +65,7 @@ RSpec.describe "find an invoice" do
     end
 
     it "by the customer_id" do
-      customer = create(:customer, id: 1)
+      customer = create(:customer, id: 100000)
       invoice1 = create(:invoice)
       invoice2 = create(:invoice)
       invoice3 = create(:invoice, customer_id: customer.id)
