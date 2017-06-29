@@ -14,5 +14,14 @@ class Merchant < ApplicationRecord
 
   def format_price(sum)
    (sum.to_f/100).to_s
- end
+  end
+
+  def self.most_revenue(limit=5)
+    select("merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) AS revenue")
+      .joins(invoices: [:invoice_items, :transactions])
+      .merge(Transaction.successful)
+      .group(:id)
+      .order('revenue DESC')
+      .limit(limit)
+  end
 end
