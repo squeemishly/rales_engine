@@ -1,15 +1,21 @@
 require 'rails_helper'
 
 describe "Invoices API" do
-  xit "returns a collection of associated items" do
+  it "returns a collection of associated items" do
     invoice_1 = create(:invoice)
-    create_list(:item, 3, invoice: invoice_1)
+    item_1 = create(:item)
+    item_2 = create(:item)
+    create(:invoice_item, invoice: invoice_1, item: item_1)
+    create(:invoice_item, invoice: invoice_1, item: item_1)
+    create(:invoice_item, invoice: invoice_1, item: item_2)
 
     get "/api/v1/invoices/#{invoice_1.id}/items"
+
     expect(response).to be_success
 
     items = JSON.parse(response.body)
 
-    expect(items.first["result"]).to eq("success")
+    expect(items.first["id"]).to eq(item_1.id)
+    expect(items.last["id"]).to eq(item_2.id)
   end
 end
