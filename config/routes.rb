@@ -45,6 +45,7 @@ Rails.application.routes.draw do
          get '/find_all', to: 'find#index'
          get "/:id/invoice_items", to: "items_invoice_items#show"
          get "/:id/merchant", to: "items_merchants#show"
+         get '/most_revenue', to: "most_revenue#index"
        end
 
       resources :items, only: [:index, :show]
