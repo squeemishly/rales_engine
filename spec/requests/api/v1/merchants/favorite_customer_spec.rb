@@ -32,9 +32,9 @@ RSpec.describe "a merchants favorite customer can be found" do
     customer = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(customer.first["id"]).to eq customer2.id
-    expect(customer.first["id"]).to_not eq customer1.id
-    expect(customer.first["id"]).to_not eq customer3.id
-    expect(customer.first["id"]).to_not eq customer4.id
+    expect(customer["id"]).to eq customer2.id
+    expect(customer["id"]).to_not eq customer1.id
+    expect(customer["id"]).to_not eq customer3.id
+    expect(customer["id"]).to_not eq customer4.id
   end
 end
