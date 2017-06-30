@@ -17,7 +17,7 @@ RSpec.describe "Items requests" do
     expect(item).to have_key "merchant_id"
     expect(item["name"]).to be_a String
     expect(item["description"]).to be_a String
-    expect(item["unit_price"]).to be_a Float
+    expect(item["unit_price"]).to be_a String
     expect(item["merchant_id"]).to be_a Integer
   end
 

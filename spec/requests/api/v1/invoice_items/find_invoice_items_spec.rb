@@ -1,19 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "find invoice items" do
-  it "as a single item - unit_price" do
-    invoice_item1 = create(:invoice_item)
-    invoice_item2 = create(:invoice_item)
-
-    get "/api/v1/invoice_items/find?unit_price=#{invoice_item1.unit_price}"
-    parsed_invoice_item = JSON.parse(response.body)
-
-    expect(response).to be_success
-    expect(parsed_invoice_item["unit_price"]).to eq invoice_item1.unit_price
-    expect(parsed_invoice_item["id"]).to eq invoice_item1.id
-    expect(parsed_invoice_item["id"]).to_not eq invoice_item2.id
-  end
-
   it "as a single item - id" do
     invoice_item1 = create(:invoice_item)
     invoice_item2 = create(:invoice_item)
@@ -49,6 +36,19 @@ RSpec.describe "find invoice items" do
 
     expect(response).to be_success
     expect(parsed_invoice_item["invoice_id"]).to eq invoice_item1.invoice_id
+    expect(parsed_invoice_item["id"]).to eq invoice_item1.id
+    expect(parsed_invoice_item["id"]).to_not eq invoice_item2.id
+  end
+
+  it "as a single item - unit_price" do
+    invoice_item1 = create(:invoice_item, unit_price: "27404")
+    invoice_item2 = create(:invoice_item, unit_price: "3987")
+
+    get "/api/v1/invoice_items/find?unit_price=#{invoice_item1.unit_price}"
+    parsed_invoice_item = JSON.parse(response.body)
+
+    expect(response).to be_success
+    expect(parsed_invoice_item["unit_price"]).to eq invoice_item1.unit_price
     expect(parsed_invoice_item["id"]).to eq invoice_item1.id
     expect(parsed_invoice_item["id"]).to_not eq invoice_item2.id
   end
