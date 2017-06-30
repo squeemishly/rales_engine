@@ -1,7 +1,6 @@
 class Item < ApplicationRecord
   has_many :invoice_items
   has_many :invoices, through: :invoice_items
-
   belongs_to :merchant
 
   def unit_price
@@ -17,9 +16,27 @@ class Item < ApplicationRecord
       .limit(limit)
   end
 
-  private
-
-  def convert(price)
-    (price.to_f/100).to_s
+  def self.most_items(quantity)
+    joins(:invoice_items)
+   .group('id')
+   .order("sum(invoice_items.quantity) DESC")
+   .limit(quantity)
   end
+
+  def best_day
+     day = invoices.joins(:transactions, :invoice_items)
+     .merge(Transaction
+     .successful)
+     .group('invoices.id')
+     .order("sum(invoice_items.quantity)DESC")
+     .first.created_at
+
+     { "best_day" => day }
+   end
+
+     private
+
+   def convert(price)
+     (price.to_f/100).to_s
+    end
 end
