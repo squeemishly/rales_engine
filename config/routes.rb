@@ -37,6 +37,7 @@ Rails.application.routes.draw do
          get '/:id/merchant',         to: 'merchant#show'
          get '/:id/customer',         to: 'customer#show'
          get '/:id/transactions',     to: 'transactions#index'
+         get '/random',               to: 'random#show'
        end
 
       resources :invoices, only: [:index, :show]
@@ -57,6 +58,7 @@ Rails.application.routes.draw do
          get '/most_revenue',         to: "most_revenue#index"
          get '/:id/best_day',         to: "best_day#show"
          get '/most_items',           to: "most_items#index"
+         get '/random',               to: 'random#show'
        end
 
       resources :items, only: [:index, :show]
