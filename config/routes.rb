@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   namespace :api do
      namespace :v1 do
 
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
         get "/:id/revenue",          to: "revenue#index"
         get "/:id/favorite_customer",to: "favorite_customer#show"
         get "/revenue",              to: "revenue#show"
+        get "/most_items",           to: "most_items#index"
        end
 
        resources :merchants, only: [:index, :show]
