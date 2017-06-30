@@ -38,7 +38,7 @@ RSpec.describe "can find items" do
   end
 
   it "as a single item at a time - by unit_price" do
-    item = create(:item, unit_price: "54.34")
+    item = create(:item, unit_price: "5434")
     item2 = create(:item)
 
     get "/api/v1/items/find?unit_price=#{item.unit_price}"
