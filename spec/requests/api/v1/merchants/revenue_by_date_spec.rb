@@ -37,9 +37,9 @@ RSpec.describe "find the total revenue for all merchants" do
 
     get '/api/v1/merchants/revenue?date=2017-06-29 20:59:38'
 
-    value = response.body
+    value = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(value).to eq "12.30"
+    expect(value["total_revenue"]).to eq "12.30"
   end
 end

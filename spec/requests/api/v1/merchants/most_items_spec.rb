@@ -6,10 +6,10 @@ RSpec.describe "Merchant API" do
 
     merchant_1, merchant_2 = create_list(:merchant, 2)
 
-    create_list(:item, 10)
+    items_1 = create_list(:item, 10)
+    items_2 = create_list(:item, 10)
 
-    merchant_1.items << Item.take(10)
-    merchant_2.items << Item.take(4)
+
 
     get "/api/v1/merchants/most_items?quantity=10"
 

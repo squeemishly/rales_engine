@@ -1,6 +1,8 @@
 class Api::V1::Items::FindController < ApplicationController
   def show
+    require "pry"; binding.pry
     render json: Item.find_by(item_params)
+    require "pry"; binding.pry
   end
 
   def index
