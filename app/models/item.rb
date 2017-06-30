@@ -12,6 +12,13 @@ class Item < ApplicationRecord
       .limit(limit)
   end
 
+  def self.most_items(quantity)
+    joins(:invoice_items)
+   .group('id')
+   .order("sum(invoice_items.quantity) DESC")
+   .limit(quantity)
+  end
+
   def best_day
      day = invoices.joins(:transactions, :invoice_items)
      .merge(Transaction
