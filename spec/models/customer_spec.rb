@@ -8,7 +8,6 @@ RSpec.describe Customer, type: :model do
 
   it "has the appropriate fields" do
     customer = create(:customer)
-
     expect(customer.first_name).to eq "Mia"
     expect(customer.last_name).to eq "Jaeger"
   end
