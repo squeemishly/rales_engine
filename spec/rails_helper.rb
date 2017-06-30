@@ -9,6 +9,8 @@ require 'rspec/rails'
 require 'capybara/rails'
 # Require shoulda-matchers and config it with Rails and RSpec
 require 'shoulda-matchers'
+require 'support/factory_girl'
+
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -64,5 +66,5 @@ RSpec.configure do |config|
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
-  # config.filter_gems_from_backtrace("gem name")
+  config.filter_gems_from_backtrace("activerecord-5.1.2", "factory_girl-4.8.0", "rack-test-0.6.3", "rack-2.0.3", "railties-5.1.2", "active_model_serializers-0.10.6")
 end
