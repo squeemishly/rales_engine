@@ -55,11 +55,12 @@ Rails.application.routes.draw do
        namespace :items do
          get '/find',                 to: 'find#show'
          get '/find_all',             to: 'find#index'
-         get '/:id/invoice_items',    to: 'items_invoice_items#show'
-         get '/:id/merchant',         to: 'items_merchants#show'
-         get '/most_revenue',         to: 'most_revenue#index'
-         get '/:id/best_day',         to: 'best_day#show'
-         get '/most_items',           to: 'most_items#index'
+         get "/:id/invoice_items",    to: "items_invoice_items#show"
+         get "/:id/merchant",         to: "items_merchants#show"
+         get '/most_revenue',         to: "most_revenue#index"
+         get '/:id/best_day',         to: "best_day#show"
+         get '/most_items',           to: "most_items#index"
+         get '/random',               to: 'random#show'
        end
 
       resources :items, only: [:index, :show]
