@@ -12,4 +12,12 @@ require 'rails_helper'
         expect(merchant).to respond_to(:invoices)
       end
     end
+
+    context "attributes" do
+      it "has the appropriate attributes" do
+        merchant = create(:merchant)
+        expect(merchant.attributes).to include("id")
+        expect(merchant.attributes).to include("name")
+      end
+    end
   end

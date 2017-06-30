@@ -20,4 +20,12 @@ RSpec.describe Invoice do
     invoice = create(:invoice)
     expect(invoice).to respond_to(:merchant)
   end
+
+  it "has the appropriate fields" do
+    invoice = create(:invoice)
+    expect(invoice.attributes).to include("id")
+    expect(invoice.attributes).to include("status")
+    expect(invoice.attributes).to include("customer_id")
+    expect(invoice.attributes).to include("merchant_id")
+  end
 end
