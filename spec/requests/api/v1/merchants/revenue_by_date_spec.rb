@@ -40,6 +40,6 @@ RSpec.describe "find the total revenue for all merchants" do
     value = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(value["total_revenue"]).to eq "12.30"
+    expect(value["total_revenue"]).to eq "14.63"
   end
 end
